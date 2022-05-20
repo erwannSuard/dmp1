@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-
+use App\Entity\Contact;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,6 +38,42 @@ class Funding
      * })
      */
     private $idContactFunding;
+
+    public function getIdFunding(): ?int
+    {
+        return $this->idFunding;
+    }
+
+    public function getGrantFunding(): ?int
+    {
+        return $this->grantFunding;
+    }
+
+    public function setGrantFunding(int $grantFunding): self
+    {
+        $this->grantFunding = $grantFunding;
+
+        return $this;
+    }
+
+    public function getIdContactFunding(): ?Contact
+    {   
+        if($this->idContactFunding)
+        {
+            return $this->idContactFunding;
+        }
+        return $this->null;
+
+        //Original contenait uniquement :
+        // return $this->idContactFunding;
+    }
+
+    public function setIdContactFunding(?Contact $idContactFunding): self
+    {
+        $this->idContactFunding = $idContactFunding;
+
+        return $this;
+    }
 
 
 }

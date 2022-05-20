@@ -77,5 +77,106 @@ class Romp
      */
     private $idContactRomp;
 
+    public function getIdRomp(): ?int
+    {
+        return $this->idRomp;
+    }
+
+    public function getIdentifier(): ?string
+    {
+        return $this->identifier;
+    }
+
+    public function setIdentifier(?string $identifier): self
+    {
+        $this->identifier = $identifier;
+
+        return $this;
+    }
+
+    public function getSubmissionDate(): ?\DateTimeInterface
+    {
+        return $this->submissionDate;
+    }
+
+    public function setSubmissionDate(\DateTimeInterface $submissionDate): self
+    {
+        $this->submissionDate = $submissionDate;
+
+        return $this;
+    }
+
+    public function getVersion(): ?string
+    {
+        return $this->version;
+    }
+
+    public function setVersion(string $version): self
+    {
+        $this->version = $version;
+
+        return $this;
+    }
+
+    public function getDeliverable(): ?string
+    {
+        return $this->deliverable;
+    }
+
+    public function setDeliverable(string $deliverable): self
+    {
+        $this->deliverable = $deliverable;
+
+        return $this;
+    }
+
+    public function getLicence(): ?string
+    {
+        return $this->licence;
+    }
+
+    public function setLicence(?string $licence): self
+    {
+        $this->licence = $licence;
+
+        return $this;
+    }
+
+    public function getIdProjectRomp(): ?Project
+    {
+        if($this->idProjectRomp)
+        {
+            return $this->idProjectRomp;
+        }
+        return $this->null;
+        //Original contenait uniquement :
+        // return $this->idProjectRomp;
+    }
+
+    public function setIdProjectRomp(?Project $idProjectRomp): self
+    {
+        $this->idProjectRomp = $idProjectRomp;
+
+        return $this;
+    }
+
+    public function getIdContactRomp(): ?Contact
+    {
+        if($this->idContactRomp)
+        {
+            return $this->idContactRomp;
+        }
+        return $this->null;
+        //Original contenait uniquement :
+        // return $this->idContactRomp;
+    }
+
+    public function setIdContactRomp(?Contact $idContactRomp): self
+    {
+        $this->idContactRomp = $idContactRomp;
+
+        return $this;
+    }
+
 
 }
