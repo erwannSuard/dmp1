@@ -25,21 +25,21 @@ class Project
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     * @ORM\Column(name="title", type="text", nullable=false)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="abstract", type="string", length=255, nullable=false)
+     * @ORM\Column(name="abstract", type="text", nullable=false)
      */
     private $abstract;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="acronyme", type="string", length=255, nullable=false)
+     * @ORM\Column(name="acronyme", type="text", nullable=false)
      */
     private $acronyme;
 
@@ -60,14 +60,14 @@ class Project
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255, nullable=false)
+     * @ORM\Column(name="type", type="text", nullable=false)
      */
     private $type;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="website", type="string", length=255, nullable=true)
+     * @ORM\Column(name="website", type="text", nullable=true)
      */
     private $website;
 

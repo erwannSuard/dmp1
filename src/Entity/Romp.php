@@ -25,7 +25,7 @@ class Romp
     /**
      * @var string|null
      *
-     * @ORM\Column(name="identifier", type="string", length=255, nullable=true)
+     * @ORM\Column(name="identifier", type="text", nullable=true)
      */
     private $identifier;
 
@@ -39,21 +39,21 @@ class Romp
     /**
      * @var string
      *
-     * @ORM\Column(name="version", type="string", length=50, nullable=false)
+     * @ORM\Column(name="version", type="text", nullable=false)
      */
     private $version;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="deliverable", type="string", length=255, nullable=false)
+     * @ORM\Column(name="deliverable", type="text", nullable=false)
      */
     private $deliverable;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="licence", type="string", nullable=true, options={"default"="CC-BY-4.0"})
+     * @ORM\Column(name="licence", type="text", nullable=true, options={"default"="CC-BY-4.0"})
      */
     private $licence = 'CC-BY-4.0';
 

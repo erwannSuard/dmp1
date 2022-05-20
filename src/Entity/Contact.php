@@ -23,30 +23,30 @@ class Contact
     private $idContact;
 
     /**
-     * @var string|null
+     * @var string
      *
-     * @ORM\Column(name="type_contact", type="string", nullable=true)
+     * @ORM\Column(name="type_contact", type="text", nullable=false)
      */
     private $typeContact;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="last_name", type="string", length=50, nullable=false)
+     * @ORM\Column(name="last_name", type="text", nullable=false)
      */
     private $lastName;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="first_name", type="string", length=50, nullable=true)
+     * @ORM\Column(name="first_name", type="text", nullable=true)
      */
     private $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="mail", type="string", length=50, nullable=false)
+     * @ORM\Column(name="mail", type="text", nullable=false)
      */
     private $mail;
 
@@ -60,7 +60,7 @@ class Contact
     /**
      * @var string|null
      *
-     * @ORM\Column(name="identifier", type="string", length=50, nullable=true)
+     * @ORM\Column(name="identifier", type="text", nullable=true)
      */
     private $identifier;
 
