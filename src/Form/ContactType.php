@@ -7,13 +7,18 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 class ContactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('typeContact', TextType::class)
+            ->add('typeContact', ChoiceType::class,[
+                'choices' => [
+                    'Organization' => 'Organization',
+                    'Person' => 'Person',
+                ]
+            ])
             ->add('lastName', TextType::class)
             ->add('firstName', TextType::class)
             ->add('mail', TextType::class)

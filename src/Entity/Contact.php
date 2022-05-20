@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Contact
  *
  * @ORM\Table(name="contact")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\Contact")
  */
 class Contact
 {
