@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use App\Entity\Project;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Romp
  *
  * @ORM\Table(name="romp", indexes={@ORM\Index(name="IDX_23AF5FC039FFE2AA", columns={"id_project_romp"}), @ORM\Index(name="IDX_23AF5FC02891A84D", columns={"id_contact_romp"})})
- * @ORM\Entity(repositoryClass="App\Repository\Romp")
+ * @ORM\Entity(repositoryClass="App\Repository\RompRepository")
  */
 class Romp
 {
@@ -144,13 +145,13 @@ class Romp
 
     public function getIdProjectRomp(): ?Project
     {
-        if($this->idProjectRomp)
-        {
-            return $this->idProjectRomp;
-        }
-        return $this->null;
+        // if($this->idProjectRomp)
+        // {
+        //     return $this->idProjectRomp;
+        // }
+        // return $this->null;
         //Original contenait uniquement :
-        // return $this->idProjectRomp;
+        return $this->idProjectRomp;
     }
 
     public function setIdProjectRomp(?Project $idProjectRomp): self
@@ -162,13 +163,13 @@ class Romp
 
     public function getIdContactRomp(): ?Contact
     {
-        if($this->idContactRomp)
-        {
-            return $this->idContactRomp;
-        }
-        return $this->null;
+        // if($this->idContactRomp)
+        // {
+        //     return $this->idContactRomp;
+        // }
+        // return $this->null;
         //Original contenait uniquement :
-        // return $this->idContactRomp;
+        return $this->idContactRomp;
     }
 
     public function setIdContactRomp(?Contact $idContactRomp): self

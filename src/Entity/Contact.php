@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Contact
  *
  * @ORM\Table(name="contact")
- * @ORM\Entity(repositoryClass="App\Repository\Contact")
+ * @ORM\Entity(repositoryClass="App\Repository\ContactRepository")
  */
 class Contact
 {
@@ -19,8 +19,7 @@ class Contact
      *
      * @ORM\Column(name="id_contact", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="contact_id_contact_seq", allocationSize=1, initialValue=1)
+     * @ORM\GeneratedValue
      */
     private $idContact;
 

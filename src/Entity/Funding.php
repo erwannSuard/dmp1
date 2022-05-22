@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Funding
  *
  * @ORM\Table(name="funding", indexes={@ORM\Index(name="IDX_D30DD1D6A07C33DF", columns={"id_contact_funding"})})
- * @ORM\Entity(repositoryClass="App\Repository\Funding")
+ * @ORM\Entity(repositoryClass="App\Repository\FundingRepository")
  */
 class Funding
 {
@@ -58,14 +58,14 @@ class Funding
 
     public function getIdContactFunding(): ?Contact
     {   
-        if($this->idContactFunding)
-        {
-            return $this->idContactFunding;
-        }
-        return $this->null;
+        // if($this->idContactFunding)
+        // {
+        //     return $this->idContactFunding;
+        // }
+        // return $this->null;
 
         //Original contenait uniquement :
-        // return $this->idContactFunding;
+        return $this->idContactFunding;
     }
 
     public function setIdContactFunding(?Contact $idContactFunding): self

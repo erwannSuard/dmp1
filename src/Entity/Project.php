@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Funding;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Project
  *
  * @ORM\Table(name="project", indexes={@ORM\Index(name="IDX_2FB3D0EEF3B54EC9", columns={"id_ref_project"}), @ORM\Index(name="IDX_2FB3D0EEDA89326", columns={"id_funding_project"})})
- * @ORM\Entity(repositoryClass="App\Repository\Project")
+ * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
  */
 class Project
 {
@@ -103,7 +104,7 @@ class Project
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Contact", mappedBy="idProject")
+     * @ORM\ManyToMany(targetEntity="Contact", mappedBy="idProject", cascade={"persist"})
      */
     private $idContact;
 
@@ -218,13 +219,13 @@ class Project
 
     public function getIdRefProject(): ?self
     {
-        if($this->idRefProject)
-        {
-            return $this->idRefProject;
-        }
-        return $this->null;
+        // if($this->idRefProject)
+        // {
+        //     return $this->idRefProject;
+        // }
+        // return $this->null;
         //Original contenait uniquement :
-        // return $this->idRefProject;
+        return $this->idRefProject;
     }
 
     public function setIdRefProject(?self $idRefProject): self
@@ -236,13 +237,13 @@ class Project
 
     public function getIdFundingProject(): ?Funding
     {
-        if($this->idFundingProject)
-        {
-            return $this->idFundingProject;
-        }
-        return $this->null;
+        // if($this->idFundingProject)
+        // {
+        //     return $this->idFundingProject;
+        // }
+        // return $this->null;
         //Original contenait uniquement :
-        // return $this->idFundingProject;
+        return $this->idFundingProject;
     }
 
     public function setIdFundingProject(?Funding $idFundingProject): self
