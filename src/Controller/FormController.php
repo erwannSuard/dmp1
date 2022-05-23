@@ -34,7 +34,10 @@ class FormController extends AbstractController
             $contact = $formContact->getData();
             $em->persist($contact);
             $em->flush();
-            return $this->render('home/index.html.twig');
+            return $this->renderForm('form/form.html.twig', [
+                'formProject' => $formProject,
+                'formContact' => $formContact,
+            ]);
         }
 
 
