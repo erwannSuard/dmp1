@@ -3,50 +3,9 @@
 {% block title %}Form{% endblock %}
 
 {% block body %}
-{# {{ form_start(form) }}
-    <fieldset>
-        <legend>CONTACT</legend>
-        
-
-        {{ form_errors(form) }}
-
-        <div class="form-group">
-            {{ form_label(form.lastName) }}
-            {{ form_widget(form.lastName) }}
-            {{ form_errors(form.lastName) }}
-        </div>
-
-        <div class="form-group">
-            {{ form_label(form.firstName) }}
-            {{ form_widget(form.firstName) }}
-            {{ form_errors(form.firstName) }}
-        </div>
-
-        <div class="form-group">
-            {{ form_label(form.mail) }}
-            {{ form_widget(form.mail) }}
-            {{ form_errors(form.mail) }}
-        </div>
-
-        <div class="form-group">
-            {{ form_label(form.affiliation) }}
-            {{ form_widget(form.affiliation) }}
-            {{ form_errors(form.affiliation) }}
-        </div>
-
-        <div class="form-group">
-            {{ form_label(form.identifier) }}
-            {{ form_widget(form.identifier) }}
-            {{ form_errors(form.identifier) }}
-        </div>
-
-        {# <div class="form-group">
-            {{ form_widget(form.submit) }}
-        </div>  #}
-   {#  </fieldset>
-    
-{{ form_end(form) }} #}
-
+{{ form(formContact) }}
+<button class='contactBtn'>Add a contact</button>
+{# 
 {{ form_start(form) }}
 
 <fieldset>
@@ -57,42 +16,33 @@
 <fieldset>
     <legend>PROJECT</legend>
 {{ form_end(form) }}
-</fieldset>
-{# {{ form_start(form) }}
-    <fieldset>
-        <legend>CONTACT</legend>
+</fieldset> #}
 
-        {{ form_errors(form) }}
 
-        <div class="form-group">
-            {{ form_label(form.idContact.lastName.prototype) }}
-            {{ form_widget(form.idContact.lastName.prototype) }}
-            {{ form_errors(form.idContact.lastName.prototype) }}
-        </div>
+{{ form(formProject) }}
 
-        <div class="form-group">
-            {{ form_label(form.idContact.firstName.prototype) }}
-            {{ form_widget(form.idContact.firstName.prototype) }}
-            {{ form_errors(form.idContact.firstName.prototype) }}
-        </div>
 
-        <div class="form-group">
-            {{ form_label(form.idContact.mail.prototype) }}
-            {{ form_widget(form.idContact.mail.prototype) }}
-            {{ form_errors(form.idContact.mail.prototype) }}
-        </div>
+<style>
+.cache {
+    display: none;
+}
+</style>
+<script>
+var formContact = document.getElementById('contact');
+const showContactForm = (e) => {
+    formContact.classList.toggle('cache');
+    console.log('click');
+}
 
-        <div class="form-group">
-            {{ form_label(form.idContact.affiliation.prototype) }}
-            {{ form_widget(form.idContact.affiliation.prototype) }}
-            {{ form_errors(form.idContact.affiliation.prototype) }}
-        </div>
+formContact.classList.add('cache');
+document.querySelectorAll('contact').forEach(button => {
+    button.addEventListener('click', showContactForm)
+});
 
-        <div class="form-group">
-            {{ form_label(form.idContact.identifier.prototype) }}
-            {{ form_widget(form.idContact.identifier.prototype) }}
-            {{ form_errors(form.idContact.identifier.prototype) }}
-        </div>
-    </fieldset>
-{{ form_end(form) }} #}
+document.querySelectorAll('.contactBtn').forEach(btn => {
+        btn.addEventListener('click', showContactForm)
+    });
+</script>
 {% endblock %}
+
+

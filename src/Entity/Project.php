@@ -104,7 +104,7 @@ class Project
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Contact", mappedBy="idProject", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Contact", mappedBy="idProject")
      */
     private $idContact;
 
@@ -235,7 +235,7 @@ class Project
         return $this;
     }
 
-    public function getIdFundingProject(): ?Funding
+    public function getIdFundingProject(): Funding
     {
         // if($this->idFundingProject)
         // {

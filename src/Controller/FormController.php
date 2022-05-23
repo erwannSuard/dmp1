@@ -20,20 +20,41 @@ class FormController extends AbstractController
 
         //PROJECT
         $em = $doctrine->getManager();
-        // $contact = new Contact();
+        $contact = new Contact();
         $project = new Project();
-        $form = $this->createForm(ProjectType::class, $project);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid())
+        
+        $formProject = $this->createForm(ProjectType::class, $project);
+        $formProject->handleRequest($request);
+        
+        $formContact = $this->createForm(ContactType::class, $contact);
+        $formContact->handleRequest($request);
+
+        if($formContact->isSubmitted() && $formContact->isValid())
         {
-            $project = $form->getData();
+            $contact = $formContact->getData();
+            $em->persist($contact);
+            $em->flush();
+            return $this->render('home/index.html.twig');
+        }
+
+
+        if($formProject->isSubmitted() && $formProject->isValid())
+        {
+            // dd($formProject->getData()->getIdContact());
+            $project = $formProject->getData();
+            $contact = $formProject->getData()->getIdContact()[0];
+            // dd($contact);
+            // $project->addIdContact($contact);
+            $contact->addIdProject($project);
+            // dd($project);
             $em->persist($project);
             $em->flush();
 
             return $this->render('home/index.html.twig');
         }
         return $this->renderForm('form/form.html.twig', [
-            'form' => $form,
+            'formProject' => $formProject,
+            'formContact' => $formContact,
         ]);
     }
 }

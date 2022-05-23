@@ -68,7 +68,7 @@ class Contact
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Project", inversedBy="idContact")
+     * @ORM\ManyToMany(targetEntity="Project", inversedBy="idContact", cascade={"persist"})
      * @ORM\JoinTable(name="contact_project",
      *   joinColumns={
      *     @ORM\JoinColumn(name="id_contact", referencedColumnName="id_contact")

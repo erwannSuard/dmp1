@@ -37,9 +37,9 @@ class ContactType extends AbstractType
             //     'label' => 'Project ID : '
             // ])
 
-            // ->add('save', SubmitType::class, [
-            //     'label' => 'Save task'
-            // ])
+            ->add('save', SubmitType::class, [
+                'label' => 'Save contact'
+            ])
         ;
     }
 
