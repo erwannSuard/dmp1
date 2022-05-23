@@ -18,27 +18,9 @@ class FormController extends AbstractController
     public function index(Request $request, ManagerRegistry $doctrine): Response
     {
 
-        // //CONTACT
-        // $em = $doctrine->getManager();
-        // $contact = new Contact();
-        // $project = new Project();
-        // $form = $this->createForm(ContactType::class, $contact);
-        // $form->handleRequest($request);
-        // if($form->isSubmitted() && $form->isValid())
-        // {
-        //     $contact = $form->getData();
-        //     $em->persist($contact);
-        //     $em->flush();
-
-        //     return $this->render('home/index.html.twig');
-        // }
-        // return $this->renderForm('form/form.html.twig', [
-        //     'form' => $form,
-        // ]);
-
         //PROJECT
         $em = $doctrine->getManager();
-        $contact = new Contact();
+        // $contact = new Contact();
         $project = new Project();
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
