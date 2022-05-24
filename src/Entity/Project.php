@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Entity\Funding;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -114,8 +113,6 @@ class Project
     public function __construct()
     {
         $this->idContact = new \Doctrine\Common\Collections\ArrayCollection();
-        //nouveau
-        $this->idRefProject = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getIdProject(): ?int
@@ -219,36 +216,11 @@ class Project
         return $this;
     }
 
-
-
-    public function getIdRefProject(): Collection
+    public function getIdRefProject(): ?self
     {
-        // if($this->idRefProject)
-        // {
-        //     return $this->idRefProject;
-        // }
-        // return $this->null;
-        //Original contenait uniquement :
         return $this->idRefProject;
+    }
 
-        //return $this ne throw pas d'erreur (??)
-    }
-    //NOUVEAU 
-    public function addIdRefProject(Project $workPackage): self
-    {
-        if (!$this->idRefProject->contains($workPackage)) {
-            $this->idRefProject[] = $workPackage;
-        }
-        // ORIGINAl
-        // $this->idRefProject->add($workPackage);
-        return $this;
-    }
-    public function removeIdRefProject(Project $workPackage): self
-    {
-        $this->idRefProject->removeElement($workPackage);
-        return $this;
-    }
-    //FIN NOUVEAU
     public function setIdRefProject(?self $idRefProject): self
     {
         $this->idRefProject = $idRefProject;
@@ -256,14 +228,8 @@ class Project
         return $this;
     }
 
-    public function getIdFundingProject(): Funding
+    public function getIdFundingProject(): ?Funding
     {
-        // if($this->idFundingProject)
-        // {
-        //     return $this->idFundingProject;
-        // }
-        // return $this->null;
-        //Original contenait uniquement :
         return $this->idFundingProject;
     }
 

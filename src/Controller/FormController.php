@@ -34,6 +34,10 @@ class FormController extends AbstractController
             $contact = $formContact->getData();
             $em->persist($contact);
             $em->flush();
+            unset($contact);
+            unset($formContact);
+            $contact = new Contact();
+            $formContact = $this->createForm(ContactType::class, $contact);
             return $this->renderForm('form/form.html.twig', [
                 'formProject' => $formProject,
                 'formContact' => $formContact,
@@ -43,28 +47,26 @@ class FormController extends AbstractController
 
         if($formProject->isSubmitted() && $formProject->isValid())
         {
+            
             $project = $formProject->getData();
-            // dd($formProject->getData()->getIdRefProject());
-            // $project->addIdRefProject($formProject->getData()->getIdRefProject()); // OK -> Pourquoi cela m'ajoute 2x le sous projet alors ?
-            // dd($formProject->getData()->getIdRefProject());
-            foreach($formProject->getData()->getIdRefProject() as $idRef){
-                $workPackage = new Project();
-                $workPackage = $idRef;
-                // dd($workPackage);
-                // $project->addIdRefProject($workPackage);
-                $workPackage->addIdRefProject($project);
-                $em->persist($workPackage);
-                // dd($workPackage);
-                dd($project->getIdRefProject());
-            }
-            // $project->addIdRefProject($formProject->getData()->getIdRefProject());
-            // dd($project);
-            // dd($project->getIdRefProject()[0]);
             $contact = $formProject->getData()->getIdContact()[0];
             $contact->addIdProject($project);
+
+            //Boucler dans les WP :
+            foreach($formProject->get('idRefProject')->getData() as $wp)
+            {
+                $workPackage = new Project();
+                $workPackage = $wp;
+                $workPackage->setIdRefProject($project);
+                //JUSTE TANT QUE L'ACRONYME EST NON NULLABLE
+                $workPackage->setAcronyme($project->getAcronyme());
+                $em->persist($workPackage);
+            }
+
+
             $em->persist($project);
             $em->flush();
-            dd($project);
+            // dd($project);
             return $this->render('home/index.html.twig');
         }
         return $this->renderForm('form/form.html.twig', [

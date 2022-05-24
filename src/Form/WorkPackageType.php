@@ -39,9 +39,7 @@ class WorkPackageType extends AbstractType
             ->add('abstract', TextType::class,[
                 'label' => 'Abstract : '
             ])
-            ->add('acronyme', TextType::class,[
-                'label' => 'Acronyme : '
-            ])
+            
             ->add('startDate')
             ->add('duration')
             ->add('type', TextType::class,[

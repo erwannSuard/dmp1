@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-use App\Entity\Contact;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -57,14 +57,7 @@ class Funding
     }
 
     public function getIdContactFunding(): ?Contact
-    {   
-        // if($this->idContactFunding)
-        // {
-        //     return $this->idContactFunding;
-        // }
-        // return $this->null;
-
-        //Original contenait uniquement :
+    {
         return $this->idContactFunding;
     }
 

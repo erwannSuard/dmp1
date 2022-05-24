@@ -19,7 +19,8 @@ class Contact
      *
      * @ORM\Column(name="id_contact", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="contact_id_contact_seq", allocationSize=1, initialValue=1)
      */
     private $idContact;
 
@@ -68,7 +69,7 @@ class Contact
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Project", inversedBy="idContact", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Project", inversedBy="idContact")
      * @ORM\JoinTable(name="contact_project",
      *   joinColumns={
      *     @ORM\JoinColumn(name="id_contact", referencedColumnName="id_contact")

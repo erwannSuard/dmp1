@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Entity\Project;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -145,12 +144,6 @@ class Romp
 
     public function getIdProjectRomp(): ?Project
     {
-        // if($this->idProjectRomp)
-        // {
-        //     return $this->idProjectRomp;
-        // }
-        // return $this->null;
-        //Original contenait uniquement :
         return $this->idProjectRomp;
     }
 
@@ -163,12 +156,6 @@ class Romp
 
     public function getIdContactRomp(): ?Contact
     {
-        // if($this->idContactRomp)
-        // {
-        //     return $this->idContactRomp;
-        // }
-        // return $this->null;
-        //Original contenait uniquement :
         return $this->idContactRomp;
     }
 
