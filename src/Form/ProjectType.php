@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Contact;
 use App\Entity\Project;
+use App\Entity\Funding;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -35,7 +36,16 @@ class ProjectType extends AbstractType
             //     'prototype' => true,
             // ]
             // )
+            ->add('idFundingProject', CollectionType::class, 
+            [
+                // 'label' => false,
+                'entry_type' => FundingType::class,
+                'entry_options' => ['label' => false],
+                'allow_add' => true,
+                // 'by_reference' => false,
+                'prototype' => true,
 
+            ])
             //SELECT
             ->add('idContact', EntityType::class, 
             [

@@ -11,6 +11,10 @@
 {{ form_start(formProject) }}
 <fieldset>
     <h2>PROJECT</h2>
+    <fieldset>
+    <legend>Funding Infos : </legend>
+        {{ form_row(formProject.idFundingProject.vars.prototype) }}
+    </fieldset>
 {{ form_row(formProject.idContact) }}
 {{ form_row(formProject.title) }}
 {{ form_row(formProject.abstract) }}
