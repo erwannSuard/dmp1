@@ -43,13 +43,17 @@ class FormController extends AbstractController
 
         if($formProject->isSubmitted() && $formProject->isValid())
         {
-            // dd($formProject->getData()->getIdContact());
+
+            //!!!!!!!!!!!!!!!!!! À FAIRE : Boucler dans les WP !!!!!!!!!!!!!!!!!!!!!!!!!!!
+            
+
             $project = $formProject->getData();
+            dd($formProject->getData()->getIdRefProject());
+            $project->addIdRefProject($formProject->getData()->getIdRefProject());
+            dd($formProject->getData());
+            // dd($project->getIdRefProject()[0]);
             $contact = $formProject->getData()->getIdContact()[0];
-            // dd($contact);
-            // $project->addIdContact($contact);
             $contact->addIdProject($project);
-            // dd($project);
             $em->persist($project);
             $em->flush();
 

@@ -114,6 +114,8 @@ class Project
     public function __construct()
     {
         $this->idContact = new \Doctrine\Common\Collections\ArrayCollection();
+        //nouveau
+        $this->idRefProject = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getIdProject(): ?int
@@ -226,8 +228,21 @@ class Project
         // return $this->null;
         //Original contenait uniquement :
         return $this->idRefProject;
-    }
 
+        //return $this ne throw pas d'erreur (??)
+    }
+    //NOUVEAU 
+    public function addIdRefProject(Project $workPackage): self
+    {
+        $this->idRefProject->add($workPackage);
+        return $this;
+    }
+    public function removeIdRefProject(Project $workPackage): self
+    {
+        $this->idRefProject->removeElement($workPackage);
+        return $this;
+    }
+    //FIN NOUVEAU
     public function setIdRefProject(?self $idRefProject): self
     {
         $this->idRefProject = $idRefProject;
