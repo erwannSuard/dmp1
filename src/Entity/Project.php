@@ -219,7 +219,9 @@ class Project
         return $this;
     }
 
-    public function getIdRefProject(): ?self
+
+
+    public function getIdRefProject(): Collection
     {
         // if($this->idRefProject)
         // {
@@ -234,7 +236,11 @@ class Project
     //NOUVEAU 
     public function addIdRefProject(Project $workPackage): self
     {
-        $this->idRefProject->add($workPackage);
+        if (!$this->idRefProject->contains($workPackage)) {
+            $this->idRefProject[] = $workPackage;
+        }
+        // ORIGINAl
+        // $this->idRefProject->add($workPackage);
         return $this;
     }
     public function removeIdRefProject(Project $workPackage): self
