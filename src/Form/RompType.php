@@ -1,37 +1,45 @@
 <?php
 
 namespace App\Form;
+
 use App\Entity\Contact;
-use App\Entity\Funding;
+use App\Entity\Romp;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
-class FundingType extends AbstractType
+
+class RompType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('grantFunding', NumberType::class)
-            ->add('idContactFunding', EntityType::class, 
+            ->add('identifier', TextType::class)
+            ->add('submissionDate')
+            ->add('version', TextType::class)
+            ->add('deliverable', TextType::class)
+            ->add('licence', TextType::class)
+            // ->add('idProjectRomp')
+            //SELECT
+            ->add('idContactRomp', EntityType::class, 
             [
-                'label' => 'Funder',
+                'label' => 'Romp Manager',
                 'class' => Contact::class,
                 'choice_label' => 'lastName',
                 'multiple' => false,
                 'expanded' => false,
                 'required' => true,
-                //Rajouté car erreur : Expected argument of type "?App\Entity\Contact", "Doctrine\Common\Collections\ArrayCollection" given at property path "idContactFunding".
-                // 'mapped' => false,
             ])
+
+
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Funding::class,
+            'data_class' => Romp::class,
         ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Controller;
 use App\Entity\Contact;
 use App\Entity\Project;
+use App\Entity\Funding;
 
 use App\Form\ContactType;
 use App\Form\ProjectType;
@@ -20,9 +21,13 @@ class FormController extends AbstractController
 
         //PROJECT
         $em = $doctrine->getManager();
+        //Instantiation
         $contact = new Contact();
         $project = new Project();
-        
+        $funding = new Funding();
+
+
+
         $formProject = $this->createForm(ProjectType::class, $project);
         $formProject->handleRequest($request);
         
@@ -48,7 +53,13 @@ class FormController extends AbstractController
         if($formProject->isSubmitted() && $formProject->isValid())
         {
             
+            $funding = $formProject->get('idFundingProject')->getData();
             $project = $formProject->getData();
+            
+            $project->setIdFundingProject($funding['project']);
+            
+            $em->persist($funding['project']);
+            
             $contact = $formProject->getData()->getIdContact()[0];
             $contact->addIdProject($project);
 

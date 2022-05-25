@@ -29,12 +29,12 @@
 
     <h3>Work Packages</h3>
     {# <fieldset> #}
-    <ul class="idProject"
+    <ul class="idRefProject"
 {# {{ form_row(formProject.idProject.vars.prototype) }} #}
 
     {# Ajouter des tags : #}
      
-        data-index="{{ formProject.idRefProject|length > 0 ? formProject.idProject|last.vars.idProject + 1 : 0 }}"
+        data-index="{{ formProject.idRefProject|length > 0 ? formProject.idRefProject|last.vars.idRefProject + 1 : 0 }}"
         data-prototype="{{ form_widget(formProject.idRefProject.vars.prototype)|e('html_attr') }}"    
     >
         {% for tag in formProject.idRefProject %}
@@ -53,7 +53,7 @@
 
 
 {# Bouton ajout WP #}
-<button type="button" class="add_item_link" data-collection-holder-class="idProject">
+<button type="button" class="add_item_link" data-collection-holder-class="idRefProject">
 Add a Work Package
 </button>
 

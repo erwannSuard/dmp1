@@ -38,14 +38,16 @@ class ProjectType extends AbstractType
             // )
             ->add('idFundingProject', CollectionType::class, 
             [
-                // 'label' => false,
+                'label' => false,
                 'entry_type' => FundingType::class,
                 'entry_options' => ['label' => false],
                 'allow_add' => true,
                 // 'by_reference' => false,
                 'prototype' => true,
-
+                'mapped' => false,
+                'prototype_name' => 'project',
             ])
+            
             //SELECT
             ->add('idContact', EntityType::class, 
             [
