@@ -22,20 +22,6 @@ class ProjectType extends AbstractType
     {
         $builder
 
-            // //INSERT
-            // ->add('idContact', CollectionType::class, 
-
-            // [   'label' => false,
-            //     'entry_type' => ContactType::class,
-            //     'entry_options' => ['label' => false],
-            //     //Permettre de rajouter des formulaires :
-            //     'allow_add' => true,
-            //     //Je ne sais pas encore pourquoi :
-            //     'by_reference' => false,
-            //     'allow_delete' => true,
-            //     'prototype' => true,
-            // ]
-            // )
             ->add('idFundingProject', CollectionType::class, 
             [
                 'label' => false,
@@ -54,9 +40,12 @@ class ProjectType extends AbstractType
                 'label' => 'Project coordinator',
                 'class' => Contact::class,
                 'choice_label' => 'lastName',
-                'multiple' => true,
+                //changé
+                'multiple' => false,
                 'expanded' => false,
                 'required' => true,
+                //Rajouté
+                'mapped' => false,
 
             ])
 

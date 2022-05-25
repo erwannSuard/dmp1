@@ -52,6 +52,7 @@ class FormController extends AbstractController
 
         if($formProject->isSubmitted() && $formProject->isValid())
         {
+            // dd($project);
             
             $funding = $formProject->get('idFundingProject')->getData();
             $project = $formProject->getData();
@@ -60,24 +61,45 @@ class FormController extends AbstractController
             
             $em->persist($funding['project']);
             
-            $contact = $formProject->getData()->getIdContact()[0];
+            //--------------------------  ajout  --------------------------
+            $contact = $formProject->get('idContact')->getData();
             $contact->addIdProject($project);
-
+            $project->addIdContact($contact);
+            // dd($contact);
+            //--------------------------  Fin ajout  --------------------------
+            //--------------------------  Original  --------------------------
+            // $contact = $formProject->getData()->getIdContact()[0];
+            // $contact->addIdProject($project);
+            //--------------------------  Fin original  --------------------------
             //Boucler dans les WP :
+            
+            // dd($formProject['idRefProject']->getData());
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!   à corriger  !!!!!!!!!!!!!!!!!!!!!!!!
+            //Incrémenter l'index
+            $i=0;
             foreach($formProject->get('idRefProject')->getData() as $wp)
             {
+                
+                $cct = new Contact();
+                $cct = $formProject['idRefProject'][$i]['idContact']->getNormData();
                 $workPackage = new Project();
                 $workPackage = $wp;
                 $workPackage->setIdRefProject($project);
+
+                $cct->addIdProject($workPackage);
+                $workPackage->addIdContact($cct);
                 //JUSTE TANT QUE L'ACRONYME EST NON NULLABLE
                 $workPackage->setAcronyme($project->getAcronyme());
+                // dd($workPackage);
                 $em->persist($workPackage);
+                $em->persist($cct);
+                $i+=1;
             }
 
 
             $em->persist($project);
             $em->flush();
-            // dd($project);
+            dd($project);
             return $this->render('home/index.html.twig');
         }
         return $this->renderForm('form/form.html.twig', [

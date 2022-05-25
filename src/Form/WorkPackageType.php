@@ -27,10 +27,10 @@ class WorkPackageType extends AbstractType
                 'label' => 'Work package leader',
                 'class' => Contact::class,
                 'choice_label' => 'lastName',
-                'multiple' => true,
+                'multiple' => false,
                 'expanded' => false,
                 'required' => true,
-
+                'mapped' => false,
             ])
 
             ->add('title', TextType::class,[
