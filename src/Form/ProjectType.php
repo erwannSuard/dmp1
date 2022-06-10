@@ -4,14 +4,12 @@ namespace App\Form;
 
 use App\Entity\Contact;
 use App\Entity\Project;
-use App\Entity\Funding;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use App\Form\WorkPackageType;
@@ -34,7 +32,7 @@ class ProjectType extends AbstractType
                 'prototype_name' => 'project',
             ])
             
-            //SELECT
+           
             ->add('idContact', EntityType::class, 
             [
                 'label' => 'Project coordinator',
@@ -69,11 +67,7 @@ class ProjectType extends AbstractType
             ->add('objectives', TextAreaType::class,[
                 'label' => 'Objectives : '
             ])
-            // ->add('idRefProject')
-            // ->add('idFundingProject')
-            // ->add('idContact')
 
-            //INSERT
             ->add('idRefProject', CollectionType::class, 
 
             [   'label' => false,
