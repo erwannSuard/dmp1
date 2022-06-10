@@ -1,7 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
-
+{% block title %}FAIR-EASE{% endblock %}
+{% block links %}
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/index.compiled.css">
+    <link rel="stylesheet" href="assets/css/Navbar-Centered-Links.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+{% endblock %}
 {% block body %}
-<a href="/form">Add a project</a>
+    <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="background: url(assets/img/FAIREASE_BG.png) no-repeat, #ffffff;margin-left: 0;transform: translate(0px);background-size: cover, auto;height: 100vh;">
+        <div style="background: linear-gradient(to bottom left,#AED741, #8fd16f, #53abab, #65CFCB);padding: 10px;border-radius: 25px;/*max-width: 650px;*//*width: 650px;*/min-width: 250px;">
+            <div class="text-center d-flex flex-column align-items-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="background: #ffffff;color: #000000;padding: 0px;border-radius: 25px;gap: 50px;max-width: 900px;min-width: 200px;width: auto;padding-top: 3em;"><img src="assets/img/Couche%201.png" style="max-width: 313px;">
+                <h1 class="text-center" style="font-size: 35px;font-weight: bold;min-width: auto;">Project and Data<br>Management Plan</h1><button class="btn btn-primary btn-lg text-uppercase fw-bold" type="submit" style="width: 129.875px;border-radius: 6px;">Enter</button>
+                <div class="row gx-5 d-flex d-xxl-flex flex-row justify-content-center align-items-center align-items-xxl-center" style="margin: 0px;max-width: 550px;min-width: auto;width: 100%;">
+                    <div class="col-auto float-start justify-content-center align-self-center"><img src="assets/img/Logo_Funded_EU.png" style="max-width: 180px;float: left;"></div>
+                    <div class="col-auto"><img src="assets/img/Couche%202.png" style="max-width: 57px;/*margin-left: auto;*/margin-right: auto;"></div>
+                    <div class="col-auto d-flex flex-row justify-content-center"><img class="d-xl-flex" src="assets/img/Logo_Horizon_EU.png" style="max-width: 100px;margin-left: auto;float: right;"></div>
+                </div>
+                <div class="d-grid d-lg-flex d-xl-flex align-content-center align-items-lg-center" style="width: 120%;"></div>
+            </div>
+        </div>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    </div>
+    <a href="/form">Add a new project</a>
+    <div {{ stimulus_controller('say-hello') }}>
+        <input type="text" {{ stimulus_target('say-hello', 'name') }}>
+
+        <button {{ stimulus_action('say-hello', 'greet') }}>
+            Greet
+        </button>
+
+        <div {{ stimulus_target('say-hello', 'output') }}></div>
+    </div>
 {% endblock %}
